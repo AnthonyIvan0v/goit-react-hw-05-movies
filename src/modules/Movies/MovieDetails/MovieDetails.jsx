@@ -9,7 +9,7 @@ const MovieDetails = () => {
   const [page, setPage] = useState(1);
   const [movieDetails, setMovieDetails] = useState(null);
 
-  const [searchParams, setSearchParams] = useSearchParams(); //коли викликається useSearchParams нам повертається як при useState масив
+  // const [searchParams, setSearchParams] = useSearchParams(); //коли викликається useSearchParams нам повертається як при useState масив
 
   const { id } = useParams();
   useEffect(() => {
@@ -22,11 +22,11 @@ const MovieDetails = () => {
       }
     };
     fetchPost();
-  }, [page, setItems]);
+  }, [setItems, id]);
 
-  const showMovie = useCallback(data => {
-    setMovieDetails(data);
-  }, []);
+  // const showMovie = useCallback(data => {
+  //   setMovieDetails(data);
+  // }, []);
 
   return (
     <>

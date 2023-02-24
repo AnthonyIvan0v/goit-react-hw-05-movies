@@ -12,7 +12,7 @@ const MovieSearch = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const search = searchParams.get('search');
   const page = searchParams.get('page');
-
+  console.log(movieDetails);
   useEffect(() => {
     if (!search) {
       return;
@@ -37,7 +37,6 @@ const MovieSearch = () => {
     },
     [setSearchParams]
   );
-
   const showMovie = useCallback(
     data => {
       setMovieDetails(data);
@@ -48,7 +47,7 @@ const MovieSearch = () => {
   const loadMore = useCallback(() => {
     //useCallback запам'ятовує попередне значення тому в масив додаємо сеарч
     setSearchParams({ search, page: Number(page) + 1 });
-  }, [search]);
+  }, [search, setSearchParams]);
 
   return (
     <>
