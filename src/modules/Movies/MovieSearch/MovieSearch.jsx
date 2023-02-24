@@ -8,7 +8,7 @@ import { searchMovies } from 'services/movies-api';
 const MovieSearch = () => {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
+
   const [movieDetails, setMovieDetails] = useState(null);
 
   const [searchParams, setSearchParams] = useSearchParams();
@@ -19,23 +19,25 @@ const MovieSearch = () => {
     if (!search) {
       return;
     }
-    const fetchPost = async () => {
+    const fetchMovie = async () => {
       try {
         setLoading(true);
         const data = await searchMovies(search, page);
         setItems(prevItems => [...prevItems, ...data]);
       } catch (error) {
-        setError(error.message);
       } finally {
         setLoading(false);
       }
     };
-    fetchPost();
-  }, [page, search, setLoading, setItems, setError]);
-  const onSearchMovie = useCallback(({ search }) => {
-    setSearchParams({ search, page: 1 });
-    setItems([]);
-  }, []);
+    fetchMovie();
+  }, [page, search, setLoading, setItems]);
+  const onSearchMovie = useCallback(
+    ({ search }) => {
+      setSearchParams({ search, page: 1 });
+      setItems([]);
+    },
+    [setSearchParams]
+  );
 
   const showMovie = useCallback(data => {
     setMovieDetails(data);
@@ -46,16 +48,10 @@ const MovieSearch = () => {
     setSearchParams({ search, page: Number(page) + 1 });
   }, [search]);
 
-  const closeModal = useCallback(() => {
-    setMovieDetails(null);
-  }, []);
-
   return (
     <>
       <MovieSearchForm initialState={{ search }} onSubmit={onSearchMovie} />
       <MoviesList items={items} showPost={showMovie} />
-      {loading && <p>...Load posts</p>}
-      {Boolean(items.length) && <button onClick={loadMore}>Load more</button>}
     </>
   );
 };

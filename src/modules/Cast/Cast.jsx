@@ -29,24 +29,22 @@ export const Cast = () => {
     <div>
       <ul className={styles.list}>
         {casts &&
-          casts.map(
-            ({ profile_path, name, movieId, original_name, character }) => {
-              const IMG_PATH = 'https://image.tmdb.org/t/p/w500/';
-              const profilePath = IMG_PATH + profile_path;
+          casts.map(({ profile_path, name, id, original_name, character }) => {
+            const IMG_PATH = 'https://image.tmdb.org/t/p/w500/';
+            const profilePath = IMG_PATH + profile_path;
 
-              return (
-                <li className={styles.item} key={movieId}>
-                  <img
-                    src={profilePath}
-                    alt={name}
-                    className={styles.profileImg}
-                  />
-                  <p> {name || original_name}</p>
-                  <p>Character: {character}</p>
-                </li>
-              );
-            }
-          )}
+            return (
+              <li className={styles.item} key={id}>
+                <img
+                  src={profilePath}
+                  alt={name}
+                  className={styles.profileImg}
+                />
+                <p> {name || original_name}</p>
+                <p>Character: {character}</p>
+              </li>
+            );
+          })}
       </ul>
     </div>
   );
