@@ -38,9 +38,12 @@ const MovieSearch = () => {
     [setSearchParams]
   );
 
-  const showMovie = useCallback(data => {
-    setMovieDetails(data);
-  }, []);
+  const showMovie = useCallback(
+    data => {
+      setMovieDetails(data);
+    },
+    [setMovieDetails]
+  );
 
   const loadMore = useCallback(() => {
     //useCallback запам'ятовує попередне значення тому в масив додаємо сеарч
