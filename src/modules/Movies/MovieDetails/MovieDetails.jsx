@@ -1,6 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import axios from 'axios';
 
 import MoviesList from '../MoviesList/MoviesList';
 import { getMovieById } from 'services/movies-api';

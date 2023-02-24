@@ -29,7 +29,7 @@ const MovieDetailsPage = () => {
       }
     };
     fetchMovie();
-  }, []);
+  }, [id]);
 
   return (
     <>

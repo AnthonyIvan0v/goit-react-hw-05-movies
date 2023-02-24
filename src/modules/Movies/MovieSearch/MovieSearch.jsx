@@ -1,5 +1,4 @@
 import { useState, useEffect, useCallback } from 'react';
-import axios from 'axios';
 
 import { useSearchParams } from 'react-router-dom';
 import MovieSearchForm from './MovieSearchForm';

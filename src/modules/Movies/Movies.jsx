@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import axios from 'axios';
 
 import MoviesList from './MoviesList/MoviesList';
 import { getTrending } from 'services/movies-api';
@@ -22,7 +21,7 @@ const Movies = () => {
       }
     };
     fetchMovies();
-  }, [setLoading, setItems, setError, getTrending]);
+  }, [setLoading, setItems, setError]);
 
   return <MoviesList items={items} />;
 };
