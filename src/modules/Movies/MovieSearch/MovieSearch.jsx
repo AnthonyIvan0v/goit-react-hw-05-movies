@@ -8,9 +8,7 @@ import { searchMovies } from 'services/movies-api';
 const MovieSearch = () => {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(false);
-
   const [movieDetails, setMovieDetails] = useState(null);
-
   const [searchParams, setSearchParams] = useSearchParams();
   const search = searchParams.get('search');
   const page = searchParams.get('page');
@@ -23,7 +21,7 @@ const MovieSearch = () => {
       try {
         setLoading(true);
         const data = await searchMovies(search, page);
-        setItems(prevItems => [...prevItems, ...data]);
+        setItems(data);
       } catch (error) {
       } finally {
         setLoading(false);
@@ -31,6 +29,7 @@ const MovieSearch = () => {
     };
     fetchMovie();
   }, [page, search, setLoading, setItems]);
+
   const onSearchMovie = useCallback(
     ({ search }) => {
       setSearchParams({ search, page: 1 });
@@ -48,10 +47,16 @@ const MovieSearch = () => {
     setSearchParams({ search, page: Number(page) + 1 });
   }, [search]);
 
+  const closeModal = useCallback(() => {
+    setMovieDetails(null);
+  }, []);
+
   return (
     <>
       <MovieSearchForm initialState={{ search }} onSubmit={onSearchMovie} />
-      <MoviesList items={items} showPost={showMovie} />
+      <MoviesList items={items} showMovie={showMovie} />
+      {loading && <p>...Load posts</p>}
+      {Boolean(items.length) && <button onClick={loadMore}>Load more</button>}
     </>
   );
 };
