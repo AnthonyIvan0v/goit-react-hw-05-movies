@@ -47,10 +47,6 @@ const MovieSearch = () => {
     setSearchParams({ search, page: Number(page) + 1 });
   }, [search]);
 
-  const closeModal = useCallback(() => {
-    setMovieDetails(null);
-  }, []);
-
   return (
     <>
       <MovieSearchForm initialState={{ search }} onSubmit={onSearchMovie} />
