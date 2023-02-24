@@ -1,0 +1,12 @@
+.list {
+  list-style: none;
+}
+
+.item {
+  cursor: pointer;
+}
+
+.link {
+  text-decoration: none;
+  color: black;
+}

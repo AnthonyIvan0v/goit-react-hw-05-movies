@@ -1,0 +1,22 @@
+.button {
+  width: 100px;
+  height: 30px;
+  margin: 0px 0 0 20px;
+  font-size: 16px;
+  color: white;
+  background-color: green;
+  border-radius: 10px;
+  border: none;
+}
+
+.wrapperMainInfo {
+  display: flex;
+  height: 400px;
+  margin: 10px 0 0 10px;
+  border-bottom: 1px solid green;
+  padding: 10px;
+}
+
+.wrapperTextContent {
+  margin-left: 30px;
+}
