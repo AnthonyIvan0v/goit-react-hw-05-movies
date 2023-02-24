@@ -6,7 +6,6 @@ import { getMovieById } from 'services/movies-api';
 
 const MovieDetails = () => {
   const [items, setItems] = useState([]);
-  const [error, setError] = useState(null);
   const [page, setPage] = useState(1);
   const [movieDetails, setMovieDetails] = useState(null);
 
@@ -19,12 +18,11 @@ const MovieDetails = () => {
         const data = await getMovieById(id);
         setItems(data);
       } catch (error) {
-        setError(error.message);
       } finally {
       }
     };
     fetchPost();
-  }, [page, setItems, setError]);
+  }, [page, setItems]);
 
   const showMovie = useCallback(data => {
     setMovieDetails(data);
