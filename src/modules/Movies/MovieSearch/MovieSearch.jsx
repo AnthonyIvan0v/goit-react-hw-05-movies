@@ -47,7 +47,7 @@ const MovieSearch = () => {
   const loadMore = useCallback(() => {
     //useCallback запам'ятовує попередне значення тому в масив додаємо сеарч
     setSearchParams({ search, page: Number(page) + 1 });
-  }, [search, setSearchParams]);
+  }, [search, setSearchParams, page]);
 
   return (
     <>
