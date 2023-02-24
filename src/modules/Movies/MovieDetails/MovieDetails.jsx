@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams, useParams } from 'react-router-dom';
 
 import MoviesList from '../MoviesList/MoviesList';
 import { getMovieById } from 'services/movies-api';
@@ -13,6 +13,7 @@ const MovieDetails = () => {
 
   const [searchParams, setSearchParams] = useSearchParams(); //коли викликається useSearchParams нам повертається як при useState масив
 
+  const { id } = useParams();
   useEffect(() => {
     const fetchPost = async () => {
       try {
