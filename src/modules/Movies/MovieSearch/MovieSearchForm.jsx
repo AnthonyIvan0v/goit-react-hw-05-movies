@@ -17,7 +17,7 @@ const MovieSearchForm = ({ initialState, onSubmit }) => {
         <label className={styles.label}>Search movie</label>
         <input
           name="search"
-          value={search}
+          // value={search}
           placeholder="Enter movie title"
           onChange={handleChange}
           required
