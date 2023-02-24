@@ -23,7 +23,6 @@ const MovieDetailsPage = () => {
       try {
         const result = await getMovieById(id);
         setMovie(result);
-        console.log(result);
       } catch ({ responce }) {
         console.log(responce.data.message);
       }

@@ -6,7 +6,6 @@ import { getMovieById } from 'services/movies-api';
 
 const MovieDetails = () => {
   const [items, setItems] = useState([]);
-  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [page, setPage] = useState(1);
   const [movieDetails, setMovieDetails] = useState(null);
@@ -17,17 +16,15 @@ const MovieDetails = () => {
   useEffect(() => {
     const fetchPost = async () => {
       try {
-        setLoading(true);
         const data = await getMovieById(id);
         setItems(data);
       } catch (error) {
         setError(error.message);
       } finally {
-        setLoading(false);
       }
     };
     fetchPost();
-  }, [page, setLoading, setItems, setError]);
+  }, [page, setItems, setError]);
 
   const showMovie = useCallback(data => {
     setMovieDetails(data);
@@ -35,7 +32,7 @@ const MovieDetails = () => {
 
   return (
     <>
-      <MoviesList items={items} showPost={showMovie} />
+      <MoviesList items={items} />
     </>
   );
 };

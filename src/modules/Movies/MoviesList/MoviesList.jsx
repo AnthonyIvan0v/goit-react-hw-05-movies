@@ -13,7 +13,7 @@ const MoviesList = ({ items, showMovie }) => {
         to={`/movies/${id}`}
         state={{ from: location }}
       >
-        <li className={styles.item} onClick={() => showMovie(id)}>
+        <li className={styles.item}>
           <h4>{title}</h4>
         </li>
       </Link>
